@@ -1,4 +1,5 @@
 <?php
+
 namespace SocialiteProviders\Yandex;
 
 use SocialiteProviders\Manager\SocialiteWasCalled;
