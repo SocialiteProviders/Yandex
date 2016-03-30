@@ -2,12 +2,17 @@
 
 namespace SocialiteProviders\Yandex;
 
-use Laravel\Socialite\Two\AbstractProvider;
 use Laravel\Socialite\Two\ProviderInterface;
-use Laravel\Socialite\Two\User;
+use SocialiteProviders\Manager\OAuth2\AbstractProvider;
+use SocialiteProviders\Manager\OAuth2\User;
 
 class Provider extends AbstractProvider implements ProviderInterface
 {
+    /**
+     * Unique Provider Identifier.
+     */
+    const IDENTIFIER = 'YANDEX';
+
     /**
      * {@inheritdoc}
      */
@@ -47,10 +52,10 @@ class Provider extends AbstractProvider implements ProviderInterface
     protected function mapUserToObject(array $user)
     {
         return (new User())->setRaw($user)->map([
-            'id' => $user['id'], 
+            'id' => $user['id'],
             'nickname' => $user['login'],
-            'name' => null, 
-            'email' => array_get($user, 'default_email'), 
+            'name' => null,
+            'email' => array_get($user, 'default_email'),
             'avatar' => 'https://avatars.yandex.net/get-yapic/'.$user['default_avatar_id'].'/islands-200',
         ]);
     }
