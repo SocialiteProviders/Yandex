@@ -56,7 +56,7 @@ class Provider extends AbstractProvider implements ProviderInterface
             'nickname' => $user['login'],
             'name' => array_get($user, 'real_name'),
             'email' => array_get($user, 'default_email'),
-            'avatar' => 'https://avatars.yandex.net/get-yapic/'.$user['default_avatar_id'].'/islands-200',
+            'avatar' => 'https://avatars.yandex.net/get-yapic/'.array_get($user, 'default_avatar_id').'/islands-200',
         ]);
     }
 
